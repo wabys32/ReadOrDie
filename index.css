@@ -163,7 +163,7 @@ progress::-webkit-progress-bar {
     background-color: white;
     width: 40%;
     position: absolute;
-    left: 40%;
+    left: 30%;
     height: 10%;
     top: 45%;
     font-size: 30px;
