@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Read Or Die</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="face">😃</div>
+    <div id="shop" onclick="openShop()">🛒</div>
+    <div id="settings">⚙️</div>
+    <div id="read" onclick="openReadingTab()">📖</div>
+    <progress id="hunger" value="70" max="100"></progress>
+    <div id="name">Arthur</div>
+    <div id="money">💵287</div>
+
+    <div id="shopTab">
+        <div id="cards">
+            <div id="card"><p id="food">🍏</p><p id="cost">100$</p></div>
+            <div id="card"><p id="food">🍐</p><p id="cost">76$</p></div>
+            <div id="card"><p id="food">🍊</p><p id="cost">45$</p></div>
+            <div id="card"><p id="food">🍅</p><p id="cost">23$</p></div>
+            <div id="card"><p id="food">🥐</p><p id="cost">64$</p></div>
+            <div id="card"><p id="food">🥯</p><p id="cost">34$</p></div>
+            <div id="card"><p id="food">🍞</p><p id="cost">86$</p></div>
+            <div id="card"><p id="food">🥖</p><p id="cost">12$</p></div>
+            <div id="card"><p id="food">🍟</p><p id="cost">43$</p></div>
+            <div id="card"><p id="food">🌭</p><p id="cost">42$</p></div>
+            <div id="card"><p id="food">🍔</p><p id="cost">66$</p></div>
+            <div id="card"><p id="food">🍕</p><p id="cost">34$</p></div>
+            <div id="card"><p id="food">🥪</p><p id="cost">77$</p></div>
+            <div id="card"><p id="food">🥙</p><p id="cost">22$</p></div>
+            <div id="card"><p id="food">🍫</p><p id="cost">43$</p></div>
+        </div>
+    </div>
+
+    <div id="readingTab">
+        <p id="title1">How many pages have you read:</p>
+        <input type="number" id="added" max="200" onclick="this.select();" value="10">
+        <div id="done">Done</div>
+    </div>
+</body>
+
+<script src="index.js"></script>
+</html>
