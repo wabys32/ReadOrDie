@@ -156,7 +156,7 @@ progress::-webkit-progress-bar {
     opacity: 0;
 }
 
-#added{
+#numbers{
     outline: none;
     border-radius: 0;
     border: 1px solid grey;
