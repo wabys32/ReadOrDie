@@ -2,6 +2,19 @@ var shopTab = document.getElementById("shopTab")
 var readingTab = document.getElementById("readingTab")
 var read = document.getElementById("read")
 var shop = document.getElementById("shop")
+var face = document.getElementById("face")
+var excelent = ['🤑', '🤩', '😇', '😍', '😎']
+var alright = ['😃', '😙', '😋', '😁']
+var good = ['😀', '🙂', '🙃', '😉']
+var bad = ['😕', '🙁', '😟', '😐']
+var terrible = ['☹️', '😖', '😬', '😶']
+var deadly = ['🤒', '🤕', '😭', '😑']
+
+function randint(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+  
+
 
 var opened = false;
 function openShop(){
@@ -66,25 +79,52 @@ document.addEventListener('keydown', function(event) {
 
 
 var hunger = document.getElementById('hunger');
+function checkMood(){
+    var v = hunger.value;
+    if(v >= 90 && v <= 100){
+        face.innerHTML = excelent[randint(0, 4)];
+    }
+    else if(v >= 70 && v < 90){
+        face.innerHTML = alright[randint(0, 3)];
+    }
+    else if(v >= 50 && v < 70){
+        face.innerHTML = good[randint(0, 3)];
+    }
+    else if(v >= 30 && v < 50){
+        face.innerHTML = bad[randint(0, 3)];
+    }
+    else if(v >= 10 && v < 30){
+        face.innerHTML = terrible[randint(0, 3)];
+    }
+    else if(v >= 1 && v < 10){
+        face.innerHTML = deadly[randint(0, 3)];
+    }
+    else{
+        face.innerHTML = '💀'
+    }
+}
+
 function eat(cost){
     if(bank >= cost){
         if(hunger.value+cost<=100){
             hunger.value += cost;
+            localStorage.setItem('hunger', hunger.value)
             bank-=cost;
             localStorage.setItem('bank', bank)
             money.innerHTML = "💵"+bank;
+            checkMood()
             openShop();
         }else{
             hunger.value = 100;
+            localStorage.setItem('hunger', hunger.value)
             bank-=cost;
             localStorage.setItem('bank', bank)
             money.innerHTML = "💵"+bank;
+            checkMood()
             openShop();
         }
     }
 }
-
-
 
 
 /*console.log(localStorage.getItem('sec'))
@@ -95,33 +135,57 @@ function update(){
 }
 window.requestAnimationFrame(update)*/
 
-
-
-const currentDate = new Date();
-const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
-const timeDiff = currentDate - startOfYear;
-const hours = timeDiff / 1000 / 60 / 60; 
-
-var lastTimeHours = 0;
-if(localStorage.getItem('lastTime') != null){
-    lastTimeHours = localStorage.getItem('lastTime');
-    console.log('Last time was: '+lastTimeHours)
+if(localStorage.getItem('hunger') != null){
+    hunger.value = parseInt(localStorage.getItem('hunger'));   
 }
 
-for(var i = roundToNearestHalf(hours); i > lastTimeHours; i--){
-    if(i%0.5 == 0){
-        hunger.vlaue -= 10;
+
+var currentDate, startOfYear, timeDiff, hours;
+currentDate = new Date();startOfYear = new Date(currentDate.getFullYear(), 0, 1);timeDiff = currentDate - startOfYear;hours = timeDiff / 1000/60/60; 
+if(localStorage.getItem('lastTime') != null){
+    lastTime = localStorage.getItem('lastTime');
+    console.log(hours - lastTime)
+    for(var i = floorHalf(hours); i>floorHalf(lastTime); i-=0.5){
+        hunger.value -= 10;
+        localStorage.setItem('hunger', hunger.value)
+    }
+}
+var nextTime = floorHalf(hours)+0.5;
+
+sett();
+var lastTime = 0;
+function sett (){
+    currentDate = new Date();
+    startOfYear = new Date(currentDate.getFullYear(), 0, 1);
+    timeDiff = currentDate - startOfYear;
+    hours = timeDiff / 1000 /60 /60; 
+    localStorage.setItem('lastTime', hours)
+    setTimeout(sett, 5000)
+    if(hours >= nextTime){
+        hunger.value -= 10;
+        checkMood()
+        localStorage.setItem('hunger', hunger.value)
+        nextTime = floorHalf(hours)+0.5;
     }
 }
 
-function setLastTime(){
-    localStorage.setItem('lastTime', roundToNearestHalf(hours))
-    console.log('Last time is set to: ' +localStorage.getItem('lastTime'))
-    setTimeout(setLastTime, 5000)
-}setLastTime()
 
+document.addEventListener('keydown', function(event) {
+    if (event.code == 'KeyE') {
+        localStorage.clear();
+    }
+});
 
+function floorHalf(number) {
+    return Math.floor(number * 2) / 2;
+  }
 
-function roundToNearestHalf(number) {
+  function roundHalf(number) {
     return Math.round(number * 2) / 2;
-}
+  }
+
+
+  checkMood()
+
+
+
