@@ -32,3 +32,13 @@ function openReadingTab(){
         read.style.removeProperty('z-index');
     }
 }
+
+
+
+const picker = document.getElementById('numbers');
+for (let i = 1; i <= 120; i++) {
+  const option = document.createElement('option');
+  option.value = i;
+  option.text = i;
+  picker.appendChild(option);
+}
