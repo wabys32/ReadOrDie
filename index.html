@@ -12,25 +12,16 @@
     <div id="read" onclick="openReadingTab()">📖</div>
     <progress id="hunger" value="70" max="100"></progress>
     <div id="name">Arthur</div>
-    <div id="money">💵287</div>
+    <div id="money">💵0</div>
+    <div id="eatIcon">🍪</div>
 
     <div id="shopTab">
         <div id="cards">
-            <div id="card"><p id="food">🍏</p><p id="cost">100$</p></div>
-            <div id="card"><p id="food">🍐</p><p id="cost">76$</p></div>
-            <div id="card"><p id="food">🍊</p><p id="cost">45$</p></div>
-            <div id="card"><p id="food">🍅</p><p id="cost">23$</p></div>
-            <div id="card"><p id="food">🥐</p><p id="cost">64$</p></div>
-            <div id="card"><p id="food">🥯</p><p id="cost">34$</p></div>
-            <div id="card"><p id="food">🍞</p><p id="cost">86$</p></div>
-            <div id="card"><p id="food">🥖</p><p id="cost">12$</p></div>
-            <div id="card"><p id="food">🍟</p><p id="cost">43$</p></div>
-            <div id="card"><p id="food">🌭</p><p id="cost">42$</p></div>
-            <div id="card"><p id="food">🍔</p><p id="cost">66$</p></div>
-            <div id="card"><p id="food">🍕</p><p id="cost">34$</p></div>
-            <div id="card"><p id="food">🥪</p><p id="cost">77$</p></div>
-            <div id="card"><p id="food">🥙</p><p id="cost">22$</p></div>
-            <div id="card"><p id="food">🍫</p><p id="cost">43$</p></div>
+            <div id="card" onclick="eat(100)"><p id="food">🍏</p><p id="cost">100$</p></div>
+            <div id="card" onclick="eat(76)"><p id="food">🍐</p><p id="cost">76$</p></div>
+            <div id="card" onclick="eat(45)"><p id="food">🍊</p><p id="cost">45$</p></div>
+            <div id="card" onclick="eat(23)"><p id="food">🍅</p><p id="cost">23$</p></div>
+            <div id="card" onclick="eat(64)"><p id="food">🥐</p><p id="cost">64$</p></div>
         </div>
     </div>
 
@@ -39,7 +30,7 @@
         <select name="numbers" id="numbers">
             
           </select>
-        <div id="done">Done</div>
+        <div id="done" onclick="addMoney()">Done</div>
     </div>
 </body>
 
