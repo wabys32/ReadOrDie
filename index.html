@@ -9,12 +9,17 @@
     <div id="menu"></div>
     <div id="face">😃</div>
     <div id="shop" onclick="openShop()">🛒</div>
-    <div id="settings">⚙️</div>
+    <div id="settings" onclick="openSettings()">⚙️</div>
     <div id="read" onclick="openReadingTab()">📖</div>
     <progress id="hunger" value="100" max="100"></progress>
-    <div id="name">Bill</div>
+    <div id="name">No name</div>
     <div id="money">💵0</div>
-    <button style="position: absolute;" onclick="minus()">minus 10</button>
+
+    <div id="settingsTab">
+        <input type="text" name="nameField" id="nameField">
+        <div id="done2" onclick="changeName()">Done</div>
+    </div>
+    <!--<button style="position: absolute;" onclick="minus()">minus 10</button>-->
     
 
     
