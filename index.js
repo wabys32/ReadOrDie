@@ -172,7 +172,7 @@ if(localStorage.getItem('lastTime') != null){
     lastTime = localStorage.getItem('lastTime');
     //console.log(hours - lastTime) time absent
     for(var i = floorHalf(hours); i>floorHalf(lastTime); i-=0.5){
-        hunger.value -= 10;
+        hunger.value -= 1;
         localStorage.setItem('hunger', hunger.value)
     }
 }
@@ -188,7 +188,7 @@ function sett (){
     localStorage.setItem('lastTime', hours)
     setTimeout(sett, 5000)
     if(hours >= nextTime){
-        hunger.value -= 10;
+        hunger.value -= 1;
         checkMood()
         localStorage.setItem('hunger', hunger.value)
         nextTime = floorHalf(hours)+0.5;
