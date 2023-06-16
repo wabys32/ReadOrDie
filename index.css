@@ -48,6 +48,7 @@ html, body {
     align-items: center;
     justify-content: center;
     font-size: 7vw;
+    z-index: 10000;
 }
 
 #hunger{
@@ -264,4 +265,45 @@ progress::-webkit-progress-bar {
     color: white;
     left: 25%;
     bottom: 28%;
+}
+
+
+#settingsTab{
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    top: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+}
+
+#done2{
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    position: absolute;
+    background-color: #027AFE;
+    color:white;
+    font-weight: bold;
+    width: 20%;
+    left: 39%;
+    top: 60%;
+    padding: 3px;
+    padding-left: 1%;
+    padding-right: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+}
+#done2:active{
+    background-color: #0f66c3;
+}
+
+#nameField{
+    top: 40%;
+    position: absolute;
+    width: 50%;
+    left: 25%;
 }
