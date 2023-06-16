@@ -100,8 +100,13 @@ function checkMood(){
         face.innerHTML = deadly[randint(0, 3)];
     }
     else{
+        document.getElementById('hunger').remove()
+        document.getElementById('shop').remove()
+        document.getElementById('read').remove()
+        document.getElementById('money').remove()
+        document.getElementById('settings').remove()
         face.innerHTML = '💀'
-        setTimeout()
+        setTimeout(die, 2000)
     }
 }
 
@@ -181,7 +186,9 @@ function sett (){
 
 document.addEventListener('keydown', function(event) {
     if (event.code == 'KeyE') {
-        localStorage.clear();
+        hunger.value -= 10;
+        checkMood()
+        localStorage.setItem('hunger', hunger.value)
     }
 });
 
@@ -199,8 +206,13 @@ function floorHalf(number) {
 
 
 function die(){
+    document.getElementById('face').remove()
     document.body.style.backgroundColor = '#96e1f6';
-    document.body.innerHTML += '<div id="grave">🪦</div><div id="grass"></div>';
+    document.body.innerHTML += '<div id="grave">🪦</div><div id="grass"></div><div id="reborn" onclick="reborn()">Reborn</div>';
     document.getElementById('name').style.top = '7%';
-    
+}
+
+function reborn(){
+    localStorage.clear()
+    location.reload()
 }
