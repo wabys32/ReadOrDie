@@ -233,10 +233,10 @@ progress::-webkit-progress-bar {
 
 
 #grave{
-    font-size: 130px;
-    top: 30%;
+    font-size: 50vw;
+    top: 10%;
     position: absolute;
-    left: 35%;
+    left: 25%;
 }
 
 #grass{
