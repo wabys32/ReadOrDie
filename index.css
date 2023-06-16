@@ -200,18 +200,6 @@ progress::-webkit-progress-bar {
     background-color: #0f66c3;
 }
 
-#eatIcon{
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    height: 22%;
-    font-size: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-}
-
 #menu{
     pointer-events: none;
     opacity: 0;
@@ -222,4 +210,28 @@ progress::-webkit-progress-bar {
     left: 0;
     right: 0;
     z-index: 999;
+}
+
+
+.float{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    font-size: 50px;
+    animation: floatUP 2s ease 0s 1 normal forwards;
+    width: 100%;
+    z-index: -99;
+}
+
+@keyframes floatUP {
+    0% {bottom: -10%;}
+    90% {bottom: 50%;}
+    100%{bottom: 50%; font-size: 0;}
+  }
+
+
+#grave{
+    font-size: 70px;
 }
