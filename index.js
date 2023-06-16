@@ -104,7 +104,7 @@ function checkMood(){
     }
 }
 
-function eat(cost){
+function eat(cost, emoji){
     if(bank >= cost){
         if(hunger.value+cost<=100){
             hunger.value += cost;
@@ -124,6 +124,14 @@ function eat(cost){
             openShop();
         }
     }
+    var obj = document.createElement('div')
+    obj.setAttribute('class', 'float')
+    obj.innerHTML = emoji
+    document.body.append(obj)
+    obj.addEventListener("animationend", function() {
+        obj.remove();
+      });
+      
 }
 
 
