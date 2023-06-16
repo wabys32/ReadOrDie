@@ -3,6 +3,7 @@ var readingTab = document.getElementById("readingTab")
 var read = document.getElementById("read")
 var shop = document.getElementById("shop")
 var face = document.getElementById("face")
+var settingsTab = document.getElementById("settingsTab")
 var excelent = ['🤑', '🤩', '😇', '😍', '😎']
 var alright = ['😃', '😙', '😋', '😁']
 var good = ['😀', '🙂', '🙃', '😉']
@@ -22,11 +23,12 @@ function openShop(){
     if(opened){
         shopTab.style.opacity = "1";
         shopTab.style.pointerEvents = "all";
+        settings.style.zIndex = '-1';
 
     }else{
         shopTab.style.opacity = "0";
         shopTab.style.pointerEvents = "none";
-
+        settings.style.zIndex = '10000';
     }
 }
 
@@ -38,7 +40,9 @@ function openReadingTab(){
         readingTab.style.pointerEvents = "all";
         read.style.zIndex = "1"
         shop.style.zIndex = "-1";
+        settings.style.zIndex = '-1';
     }else{
+        settings.style.zIndex = '10000';
         readingTab.style.opacity = "0";
         readingTab.style.pointerEvents = "none";
         shop.style.removeProperty('z-index');
@@ -120,6 +124,13 @@ function eat(cost, emoji){
             money.innerHTML = "💵"+bank;
             checkMood()
             openShop();
+            var obj = document.createElement('div')
+            obj.setAttribute('class', 'float')
+            obj.innerHTML = emoji
+            document.body.append(obj)
+            obj.addEventListener("animationend", function() {
+                obj.remove();
+              });
         }else{
             hunger.value = 100;
             localStorage.setItem('hunger', hunger.value)
@@ -128,15 +139,16 @@ function eat(cost, emoji){
             money.innerHTML = "💵"+bank;
             checkMood()
             openShop();
+            var obj = document.createElement('div')
+            obj.setAttribute('class', 'float')
+            obj.innerHTML = emoji
+            document.body.append(obj)
+            obj.addEventListener("animationend", function() {
+                obj.remove();
+              });
         }
     }
-    var obj = document.createElement('div')
-    obj.setAttribute('class', 'float')
-    obj.innerHTML = emoji
-    document.body.append(obj)
-    obj.addEventListener("animationend", function() {
-        obj.remove();
-      });
+   
       
 }
 
@@ -158,7 +170,7 @@ var currentDate, startOfYear, timeDiff, hours;
 currentDate = new Date();startOfYear = new Date(currentDate.getFullYear(), 0, 1);timeDiff = currentDate - startOfYear;hours = timeDiff / 1000/60/60; 
 if(localStorage.getItem('lastTime') != null){
     lastTime = localStorage.getItem('lastTime');
-    console.log(hours - lastTime)
+    //console.log(hours - lastTime) time absent
     for(var i = floorHalf(hours); i>floorHalf(lastTime); i-=0.5){
         hunger.value -= 10;
         localStorage.setItem('hunger', hunger.value)
@@ -184,13 +196,13 @@ function sett (){
 }
 
 
-document.addEventListener('keydown', function(event) {
+/*document.addEventListener('keydown', function(event) {
     if (event.code == 'KeyE') {
         hunger.value -= 10;
         checkMood()
         localStorage.setItem('hunger', hunger.value)
     }
-});
+});*/
 
 function floorHalf(number) {
     return Math.floor(number * 2) / 2;
@@ -203,11 +215,11 @@ function floorHalf(number) {
 
   checkMood()
 
-function minus(){
+/*function minus(){
     hunger.value -= 10;
         checkMood()
         localStorage.setItem('hunger', hunger.value)
-}
+}*/
 
 function die(){
     document.getElementById('face').remove()
@@ -220,4 +232,29 @@ function die(){
 function reborn(){
     localStorage.clear()
     location.reload()
+}
+
+
+var opened = false
+function openSettings(){
+    opened = !opened;
+    if(opened){
+        settingsTab.style.opacity = "1";
+        settingsTab.style.pointerEvents = "all";
+    }else{
+        settingsTab.style.opacity = "0";
+        settingsTab.style.pointerEvents = "none";
+    }
+}
+
+
+if(localStorage.getItem('name') != null){
+    document.getElementById('name').innerHTML = localStorage.getItem('name')
+}else{
+    document.getElementById('name').innerHTML = 'No name'
+}
+var nameField = document.getElementById('nameField')
+function changeName(){
+    localStorage.setItem('name', nameField.value)
+    document.getElementById('name').innerHTML = localStorage.getItem('name')
 }
