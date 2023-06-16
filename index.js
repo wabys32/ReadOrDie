@@ -203,13 +203,18 @@ function floorHalf(number) {
 
   checkMood()
 
-
+function minus(){
+    hunger.value -= 10;
+        checkMood()
+        localStorage.setItem('hunger', hunger.value)
+}
 
 function die(){
     document.getElementById('face').remove()
     document.body.style.backgroundColor = '#96e1f6';
     document.body.innerHTML += '<div id="grave">🪦</div><div id="grass"></div><div id="reborn" onclick="reborn()">Reborn</div>';
     document.getElementById('name').style.top = '7%';
+    document.getElementById('name').style.zIndex = '10';
 }
 
 function reborn(){
