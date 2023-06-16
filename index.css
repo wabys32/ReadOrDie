@@ -69,7 +69,7 @@ html, body {
     height: 60vh;
     font-size: 7vw;
     position: absolute;
-    top: 7%;
+    top: 0;
     font-family: Tahoma, Geneva, sans-serif;
     z-index: 10;
 }
@@ -247,4 +247,21 @@ progress::-webkit-progress-bar {
     bottom: 0;left: 0;
     background-color: rgb(53, 192, 53);
     z-index: -2;
+}
+
+
+#reborn{
+    position: absolute;
+    width: 50%;
+    height: 7%;
+    background-color: grey;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: bolder;
+    color: white;
+    left: 25%;
+    bottom: 28%;
 }
