@@ -101,6 +101,7 @@ function checkMood(){
     }
     else{
         face.innerHTML = '💀'
+        setTimeout()
     }
 }
 
@@ -197,3 +198,9 @@ function floorHalf(number) {
 
 
 
+function die(){
+    document.body.style.backgroundColor = '#96e1f6';
+    document.body.innerHTML += '<div id="grave">🪦</div><div id="grass"></div>';
+    document.getElementById('name').style.top = '7%';
+    
+}
